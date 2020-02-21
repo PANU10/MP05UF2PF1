@@ -54,6 +54,7 @@ public class HashTable {
     }
 
     public void drop(String key) {
+
         int hash = getHash(key);
         if(entries[hash] != null) {
 

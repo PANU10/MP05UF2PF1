@@ -19,16 +19,22 @@ class HashTableTest {
     @org.junit.jupiter.api.Test
     void put() {
 
-        HashTable hashTable = new HashTable();
-        hashTable.put("1", "Pratik");
-        hashTable.put("2", "Usuario2");
-        hashTable.put("3", "Usuari3");
-        hashTable.put("4", "Usuario4");
+        // Comprobar el sixe
+        // System.out.println(hashTable.size());
 
-        System.out.println(hashTable.toString());
-        System.out.println(hashTable.size());
+
+        HashTable hashTable = new HashTable();
+
+        //Comprobar el valor y la clave si entan bíen.
+        hashTable.put("1", "Pratik");
         assertEquals("Pratik", hashTable.get("1"));
-  //     assertEquals("10", hashTable.getCollisionsForKey("1", 1));
+
+        hashTable.put("2", "Valor1");
+        hashTable.put("2", "Valor2");
+
+        //Añadir dos valores en
+        System.out.println(hashTable.toString());
+
 
     }
 
