@@ -24,6 +24,7 @@ public class HashTable {
 
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
+            size++;
         }
         else {
             HashEntry temp = entries[hash];
@@ -33,7 +34,6 @@ public class HashTable {
             temp.next = hashEntry;
             hashEntry.prev = temp;
         }
-        size++;
     }
 
     /**

@@ -19,11 +19,11 @@ class HashTableTest {
     @org.junit.jupiter.api.Test
     void put() {
 
-        // Comprobar el sixe
+        // Comprobar el size
         // System.out.println(hashTable.size());
-
-
         HashTable hashTable = new HashTable();
+
+        System.out.println("Valorp por defecto de size "+ hashTable.size());
 
         //Comprobar el valor y la clave si entan bíen.
         hashTable.put("1", "Pratik");
@@ -33,7 +33,13 @@ class HashTableTest {
         hashTable.put("2", "Valor2");
 
         //Añadir dos valores en
-        System.out.println(hashTable.toString());
+        System.out.println(hashTable.toString() + "\n");
+
+
+        System.out.println("Valor actual de size " + hashTable.size());
+
+        //comprobar el tamaño real de la tabla
+        System.out.println("Tamaño de tabla " + hashTable.realSize());
 
 
     }
@@ -51,4 +57,6 @@ class HashTableTest {
     @org.junit.jupiter.api.Test
     void testToString() {
     }
+
+
 }
