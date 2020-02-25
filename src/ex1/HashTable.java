@@ -22,20 +22,34 @@ public class HashTable {
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
+
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
+            // Tamaño de claves añadidos
             size++;
         }
+
         else {
             HashEntry temp = entries[hash];
+
+            // Comprobar las claves
+            if (temp.key.equals(key)){
+                entries[hash] = hashEntry;
+                return;
+            }
             while(temp.next != null)
                 temp = temp.next;
+
+            // Cambiar el valor de una clave si coincide las claves.
+            if (temp.key.equals(key)){
+                temp.value = hashEntry.value;
+                return;
+            }
 
             temp.next = hashEntry;
             hashEntry.prev = temp;
         }
     }
-
     /**
      * Returns 'null' if the element is not found.
      */
