@@ -45,11 +45,11 @@ public class HashTable {
                 temp.value = hashEntry.value;
                 return;
             }
-
             temp.next = hashEntry;
             hashEntry.prev = temp;
         }
     }
+
     /**
      * Returns 'null' if the element is not found.
      */
@@ -63,7 +63,6 @@ public class HashTable {
 
             return temp.value;
         }
-
         return null;
     }
 
@@ -76,12 +75,13 @@ public class HashTable {
             while( !temp.key.equals(key))
                 temp = temp.next;
 
-            if(temp.prev == null) entries[hash] = null;             //esborrar element únic (no col·lissió)
+            if(temp.prev == null) entries[hash] = null;
             else{
-                if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
-                temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
+                if(temp.next != null) temp.next.prev = temp.prev;  // borramos temp, por tanto actualizamos el anterior al siguiente
+                temp.prev.next = temp.next;                        // borramos temp, por tanto actualizamos el siguiente de la anterior
             }
         }
+        size--;
     }
 
     private int getHash(String key) {
