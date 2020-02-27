@@ -47,6 +47,7 @@ public class HashTable {
             }
             temp.next = hashEntry;
             hashEntry.prev = temp;
+            size++;
         }
     }
 
@@ -80,8 +81,8 @@ public class HashTable {
                 if(temp.next != null) temp.next.prev = temp.prev;  // borramos temp, por tanto actualizamos el anterior al siguiente
                 temp.prev.next = temp.next;                        // borramos temp, por tanto actualizamos el siguiente de la anterior
             }
+            size--;
         }
-        size--;
     }
 
     private int getHash(String key) {

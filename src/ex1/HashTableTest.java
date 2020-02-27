@@ -21,8 +21,6 @@ class HashTableTest {
     @org.junit.jupiter.api.Test
     void put() {
 
-        // Comprobar el size
-        // System.out.println(hashTable.size());
         HashTable hashTable = new HashTable();
 
         System.out.println("Valorp por defecto de size "+ hashTable.size());
@@ -61,8 +59,8 @@ class HashTableTest {
         System.out.println(hashTable.toString() + "\n");
 
 
-        // Comprobar el tamaño de hash o los bukets
-        assertEquals( 5, hashTable.size());
+        // Comprobar el tamaño de los elementos
+        assertEquals( 6, hashTable.size());
         System.out.println("Valor actual de size " + hashTable.size());
 
         // Comprobar el tamaño real de la tabla
@@ -118,13 +116,15 @@ class HashTableTest {
         assertEquals("Drop 12", hashTable.get("12"));
         System.out.println(hashTable.toString()+ "\n");
 
-        System.out.println("Aqui hago un drop......");
+
+        System.out.println("Aqui hago un drop de clave [12]");
 
         // Hacer un drop de segunda clave y su valor de un buket[1].
         // Comprobar el size, tiene que tener mismo valor
         hashTable.drop("12");
         System.out.println(hashTable.toString());
         assertEquals(3, hashTable.size());
+        System.out.println("\nEl tamaño actual de los elementos : " + hashTable.size());
 
         System.out.println("\nTamaño de tabla " + hashTable.realSize());
         // Comprobar el tamaño real de la tabla
