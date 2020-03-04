@@ -2,9 +2,8 @@ package ex3;
 
 public class Enunciat {
 /*
-    1. Copia la classe HastTable de l'exercici anterior així com els seus jocs de proves dins aquest package i modifica
+    1.Copia la classe HastTable de l'exercici anterior així com els seus jocs de proves dins aquest package i modifica
        el codi font perquè el faci servir (canvia "ex2" per "ex3" allà on toqui).
-
     2. Fes que la taula de hash permeti emmagatzemar altres tipus de dades (object) i no només strings.
 
     3. Per a millorar el rendiment de la nostra taula de hash en modificarem la implementació perquè no hi hagi
