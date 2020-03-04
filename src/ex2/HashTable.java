@@ -59,8 +59,7 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            while( !temp.key.equals(key))
-                temp = temp.next;
+            temp = getHashEntry(key, temp);  // Refactor de un while que se repetiá en el método drop y get.
 
             return temp.value;
         }
@@ -73,8 +72,8 @@ public class HashTable {
         if(entries[hash] != null) {
 
             HashEntry temp = entries[hash];
-            while( !temp.key.equals(key))
-                temp = temp.next;
+
+            temp = getHashEntry(key, temp); // Refactor de un while que se repetiá en el método drop y get.
 
             if(temp.prev == null) entries[hash] = null;
             else{
@@ -83,6 +82,14 @@ public class HashTable {
             }
             size--;
         }
+    }
+
+    // Todo Refacción
+    // Me genera el siguiente método para comparar las claves y devuelve la calve temporal.
+    private HashEntry getHashEntry(String key, HashEntry temp) {
+        while( !temp.key.equals(key))
+            temp = temp.next;
+        return temp;
     }
 
     private int getHash(String key) {

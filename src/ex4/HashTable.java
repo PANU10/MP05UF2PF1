@@ -29,10 +29,11 @@ public class HashTable {
     }
 
 
+
     /**
      * @param key Basicamente genera una clave y cada calve tiene su valor propio, Este objeto tiene que tener implementado el método .hasCode()
      * @param value sirve para asignar el valor a una clave.
-     * El método en si, sirve para crear las entr
+     * El método en si, sirve para crear las entradas del hash.
      */
     public void put(String key, String value) {
         int hash = getHash(key);
@@ -171,6 +172,11 @@ public class HashTable {
         return hashTableStr.toString();
     }
 
+
+    /**
+     * @param key
+     * @return
+     */
     public ArrayList<String> getCollisionsForKey(String key) {
         return getCollisionsForKey(key, 1);
     }
