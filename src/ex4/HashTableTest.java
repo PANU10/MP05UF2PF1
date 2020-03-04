@@ -1,6 +1,8 @@
-package ex1;
+package ex4;
 
-import static org.junit.jupiter.api.Assertions.*;
+import ex1.HashTable;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HashTableTest {
 

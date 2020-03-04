@@ -26,29 +26,33 @@ public class HashTable {
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
             // Tamaño de los elementos añadidos
-            size++;
+           // size++;
         }
 
         else {
             HashEntry temp = entries[hash];
 
-            // Comprobar las claves
-            if (temp.key.equals(key)){
+            // Cambiar el valor de una clave si coincide las claves.
+            if (temp.key.equals(key)) {
                 entries[hash] = hashEntry;
                 return;
             }
-            while(temp.next != null)
+
+
+            while(temp.next != null){
                 temp = temp.next;
 
-            // Cambiar el valor de una clave si coincide las claves.
-            if (temp.key.equals(key)){
-                temp.value = hashEntry.value;
-                return;
+                if (temp.key.equals(key)) {
+                    temp.value = hashEntry.value;
+                    return;
+                }
             }
             temp.next = hashEntry;
             hashEntry.prev = temp;
-            size++;
+           //Pratik  size++;
         }
+        // Incrementar la variable al añadir un elemento.
+        size++;
     }
 
     /**
@@ -59,7 +63,13 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            temp = getHashEntry(key, temp);  // Refactor de un while que se repetiá en el método drop y get.
+            while( !temp.key.equals(key)){
+
+                // En caso que sea nulo
+                if (temp.next == null) return null;
+                temp = temp.next;
+            }
+
 
             return temp.value;
         }
@@ -72,8 +82,8 @@ public class HashTable {
         if(entries[hash] != null) {
 
             HashEntry temp = entries[hash];
-
-            temp = getHashEntry(key, temp); // Refactor de un while que se repetiá en el método drop y get.
+            while( !temp.key.equals(key))
+                temp = temp.next;
 
             if(temp.prev == null) entries[hash] = null;
             else{
@@ -82,14 +92,6 @@ public class HashTable {
             }
             size--;
         }
-    }
-
-    // Todo Refacción
-    // Me genera el siguiente método para comparar las claves y devuelve la calve temporal.
-    private HashEntry getHashEntry(String key, HashEntry temp) {
-        while( !temp.key.equals(key))
-            temp = temp.next;
-        return temp;
     }
 
     private int getHash(String key) {

@@ -20,15 +20,12 @@ public class HashTable {
         return this.size;
     }
 
-
     /**
      * @return Devuelve el tamaño de la tabla que siempre 16 en este caso.
      */
     public int realSize(){
         return this.INITIAL_SIZE;
     }
-
-
 
     /**
      * @param key Basicamente genera una clave y cada calve tiene su valor propio, Este objeto tiene que tener implementado el método .hasCode()
@@ -43,31 +40,34 @@ public class HashTable {
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
             // Tamaño de los elementos añadidos
-            size++;
+           // size++;
         }
 
         else {
             HashEntry temp = entries[hash];
 
-            // Comprobar las claves
-            if (temp.key.equals(key)){
+            // Cambiar el valor de una clave si coincide las claves.
+            if (temp.key.equals(key)) {
                 entries[hash] = hashEntry;
                 return;
             }
-            while(temp.next != null)
+
+
+            while(temp.next != null){
                 temp = temp.next;
 
-            // Cambiar el valor de una clave si coincide las claves.
-            if (temp.key.equals(key)){
-                temp.value = hashEntry.value;
-                return;
+                if (temp.key.equals(key)) {
+                    temp.value = hashEntry.value;
+                    return;
+                }
             }
             temp.next = hashEntry;
             hashEntry.prev = temp;
-            size++;
+           //Pratik  size++;
         }
+        // Incrementar la variable al añadir un elemento.
+        size++;
     }
-
 
     /**
      * Método que recupera el valor asociado a una clave de una Hashtable.
@@ -79,8 +79,13 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            while( !temp.key.equals(key))
+            while( !temp.key.equals(key)){
+
+                // En caso que sea nulo
+                if (temp.next == null) return null;
                 temp = temp.next;
+            }
+
 
             return temp.value;
         }
@@ -108,7 +113,6 @@ public class HashTable {
             size--;
         }
     }
-
     /**
      * El método coge el hash de la clave la divide en 16 y lo retorna.
      */
@@ -117,7 +121,6 @@ public class HashTable {
         // hashcode implementation.
         return key.hashCode() % INITIAL_SIZE;
     }
-
     /**
      * Esta clase contiene un contructor que guarda el valor y su clave.
      */
@@ -172,15 +175,9 @@ public class HashTable {
         return hashTableStr.toString();
     }
 
-
-    /**
-     * @param key
-     * @return
-     */
     public ArrayList<String> getCollisionsForKey(String key) {
         return getCollisionsForKey(key, 1);
     }
-
 
     /**
      * @param key

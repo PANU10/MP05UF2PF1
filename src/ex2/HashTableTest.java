@@ -1,5 +1,6 @@
 package ex2;
 
+import ex1.HashTable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,6 +29,7 @@ class HashTableTest {
         assertEquals("\n bucket[1] = [1, Valor 1]\n bucket[2] = [2, Valor 2]\n bucket[11] = [50, Valor 50]", hashTable.toString());
 
         // Poner dos claves en mismo buket[0], (colisionar)
+        hashTable.put("0", "Valor 0");
         hashTable.put("11", "Valor 11");
         hashTable.put("22","Valor 22");
 
@@ -35,8 +37,14 @@ class HashTableTest {
         assertEquals("Valor 22", hashTable.get("22"));
 
         // Cambiar el valor de segunda clave del un buket[0].
+        System.out.println(hashTable.toString());
         hashTable.put("22", "Valor 23");
         assertEquals("Valor 23", hashTable.get("22"));
+        System.out.println(hashTable.toString());
+
+
+        // Cambiar el valor colisionado que está en medio
+       hashTable.put("11", "Valor 11 cambiado por 111");
 
 
         // Comprobar el valor vacio
@@ -47,7 +55,7 @@ class HashTableTest {
 
 
         // Comprobar el tamaño de los elementos
-        assertEquals( 6, hashTable.size());
+        assertEquals( 7, hashTable.size());
         System.out.println("Valor actual de size " + hashTable.size());
 
         // Comprobar el tamaño real de la tabla
@@ -191,5 +199,6 @@ class HashTableTest {
         assertEquals(16 , hashTable.realSize());
         System.out.println("\nEl tamaño actual de los elementos : " + hashTable.size());
 
+        System.out.println( hashTable.getCollisionsForKey("11",5));
     }
 }

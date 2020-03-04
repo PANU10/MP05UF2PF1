@@ -9,7 +9,7 @@ public class MainHashTable {
          * entonces he hecho un extracción de un métod a una clase
          *
          **/
-        HashTable hashTable = new HashTable();
+        HashTableCometado hashTable = new HashTableCometado();
 
         // Put some key values.
         for (int i = 0; i < 30; i++) {
@@ -18,8 +18,8 @@ public class MainHashTable {
         }
 
         // Print the HashTable structure
-        HashTable.log("****   HashTable  ***");
-        HashTable.log(hashTable.toString());
-        HashTable.log("\nValue for key(20) : " + hashTable.get("20"));
+        HashTableCometado.log("****   HashTable  ***");
+        HashTableCometado.log(hashTable.toString());
+        HashTableCometado.log("\nValue for key(20) : " + hashTable.get("20"));
     }
 }

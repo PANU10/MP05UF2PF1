@@ -1,7 +1,10 @@
 package ex2;
 
-public class MainHashTable {
+public class HashTableMain {
     public static void main(String[] args) {
+        HashTable hashTable = new HashTable();
+
+        // Put some key values.
 
         /**
          * TODO Refacción :
@@ -9,9 +12,7 @@ public class MainHashTable {
          * entonces he hecho un extracción de un métod a una clase
          *
          **/
-        HashTable hashTable = new HashTable();
 
-        // Put some key values.
         for (int i = 0; i < 30; i++) {
             final String key = String.valueOf(i);
             hashTable.put(key, key);
