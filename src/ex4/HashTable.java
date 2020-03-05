@@ -40,7 +40,7 @@ public class HashTable {
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
             // Tamaño de los elementos añadidos
-           // size++;
+            // size++;
         }
 
         else {
@@ -52,10 +52,11 @@ public class HashTable {
                 return;
             }
 
-
             while(temp.next != null){
                 temp = temp.next;
 
+                // Antes no podia cambiar el valor de una clave, hice siguiente código para modificarlo, lo hace
+                // és comprueba las claves, si són las misma modifica el valor.
                 if (temp.key.equals(key)) {
                     temp.value = hashEntry.value;
                     return;
@@ -63,7 +64,7 @@ public class HashTable {
             }
             temp.next = hashEntry;
             hashEntry.prev = temp;
-           //Pratik  size++;
+            //Pratik  size++;
         }
         // Incrementar la variable al añadir un elemento.
         size++;
@@ -81,12 +82,11 @@ public class HashTable {
 
             while( !temp.key.equals(key)){
 
-                // En caso que sea nulo
+                // Cuando hago una prueba de una clave que está nula, me retornaba nullPoint.
+                // Para que me retorna un null, hice lo siguente....
                 if (temp.next == null) return null;
                 temp = temp.next;
             }
-
-
             return temp.value;
         }
         return null;
@@ -110,6 +110,7 @@ public class HashTable {
                 if(temp.next != null) temp.next.prev = temp.prev;  // borramos temp, por tanto actualizamos el anterior al siguiente
                 temp.prev.next = temp.next;                        // borramos temp, por tanto actualizamos el siguiente de la anterior
             }
+            // Para reducir el tamaño de los elementos.
             size--;
         }
     }
@@ -180,9 +181,8 @@ public class HashTable {
     }
 
     /**
-     * @param key
-     * @param quantity
-     * @return
+     * @param quantity la cantidad de los que colisionan.
+     * @return La cantidad de números colisionado según la clave asignada.
      */
     public ArrayList<String> getCollisionsForKey(String key, int quantity){
         /*

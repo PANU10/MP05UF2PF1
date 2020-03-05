@@ -25,8 +25,6 @@ public class HashTable {
 
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
-            // Tamaño de los elementos añadidos
-           // size++;
         }
 
         else {
@@ -38,9 +36,11 @@ public class HashTable {
                 return;
             }
 
-
             while(temp.next != null){
                 temp = temp.next;
+
+                // Las claves cuando colisionaba intenté modificar el valor de la segunda clave, no modificaba el valor.
+                // Para modificarlo, hice lo siguiente...
 
                 if (temp.key.equals(key)) {
                     temp.value = hashEntry.value;
@@ -65,12 +65,12 @@ public class HashTable {
 
             while( !temp.key.equals(key)){
 
-                // En caso que sea nulo
-                if (temp.next == null) return null;
+                // Cuando una clave no tenia valor asignado, retornaba nullPiotException, y yo hicé lo siguiente para retornar un null...
+                if (temp.next == null) {
+                    return null;
+                }
                 temp = temp.next;
             }
-
-
             return temp.value;
         }
         return null;
@@ -209,7 +209,22 @@ public class HashTable {
         return  foundKeys;
     }
 
-    public static void log(String msg) {
+    public static void main(String[] args) {
+        HashTable hashTable = new HashTable();
+        
+        // Put some key values.
+        for(int i=0; i<30; i++) {
+            final String key = String.valueOf(i);
+            hashTable.put(key, key);
+        }
+
+        // Print the HashTable structure
+        log("****   HashTable  ***");
+        log(hashTable.toString());
+        log("\nValue for key(20) : " + hashTable.get("20") );
+    }
+
+    private static void log(String msg) {
         System.out.println(msg);
     }
 }

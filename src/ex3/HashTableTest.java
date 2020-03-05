@@ -1,4 +1,4 @@
-package ex2;
+package ex3;
 
 import ex1.HashTable;
 
@@ -199,6 +199,6 @@ class HashTableTest {
         assertEquals(16 , hashTable.realSize());
         System.out.println("\nEl tamaño actual de los elementos : " + hashTable.size());
 
-        System.out.println("Colisiones : " + hashTable.getCollisionsForKey("11",5));
+        System.out.println( hashTable.getCollisionsForKey("11",5));
     }
 }
